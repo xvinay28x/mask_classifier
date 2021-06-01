@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Demo</title>
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+}
+
+#head_line{
+    font-size: 20px;
+    color:rgb(255, 255, 255);
+    margin-top: 6px;   
+    background-color:rgb(49, 54, 54);  
+    margin: 0px;    
+    height: 55px;  
+    width: 100%;
+    line-height: 50px;  
+    float: left; 
+    text-align:center;
+    border: 1px solid black;
+}
+#line{
+    margin-top: 60px;
+    margin-left: 100px;
+    float: left;
+    width: 92.6%;
+    font-size: 30px;
+}
+#copy{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    text-align: center;
+    
+}
+#label{
+    color: rgb(253, 253, 255);
+    background-color: rgb(10, 235, 205);
+    padding: 5px;
+    font-size: 30px;
+    cursor: pointer;
+    float: left;
+    margin-left: 100px;
+    
+
+}
+#label_container{
+    height: 50px;
+    width: 98%;
+    background-color:transparent;
+    float: left;
+    margin-top: 50px;
+
+}
+#image{
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-top: 40px;
+    margin-left: 100px;
+
+}
+#button{
+    height: 50px;
+    width: 180px;
+    margin-left: 100px;
+    margin-top: 90px;
+    background-color:rgb(42, 44, 43);
+    color: white;
+    font-size: 30px;
+    display:none;
+    float: left;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+#final_result{
+    margin-top: 65px;
+    margin-left: 100px;
+    float: left;
+    font-size: 50px;
+    font-family:'Courier New', Courier, monospace;
+}
+#copy_right{
+    width:100%;
+    height: auto;
+    float: left;
+    margin-top:10px;
+    
+}
+    </style>
+</head>
+<body>
+    
+    <h2 id="head_line">AI Demo</h2>
+    <h2 id="line">Face Mask Classifire</h2>
+    <form method = "POST" action = "/predict" enctype="multipart/form-data">
+        <div id="label_container">
+        <label id="label" for="image_input">Choose...</label>
+        </div>
+        <input type="file" id="image_input" oninput="upload_photo()" style="display:none;" name="image" >
+        <div style="width: 100%; height: 301px; float: left;">
+        <img id="image" src={{img_ads}} >
+        </div>
+        <input type="submit" id="button" value="Predict">
+    </form>
+    <h1 id="final_result">{{result}}</h1>
+    <div id="copy_right">
+    <p id="copy">&#169; Vinay Garg 2021</p>
+    </div>
+    <script>
+        function upload_photo(){
+            file=document.getElementById("image_input")
+            img=document.getElementById("image")
+            var c=file.files[0];
+            
+            if(c){
+                var reader=new FileReader()
+                reader.addEventListener("load",function(){
+                    img.setAttribute("src",this.result)
+                    
+                });
+                reader.readAsDataURL(c);
+                img.style.display="block"
+                document.getElementById("button").style.display="block"
+                
+            }
+            
+        }
+        function upload(){
+            document.getElementById().click()
+        }
+    </script>
+</body>
+</html>
